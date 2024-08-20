@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Calculator Extension",
+  "version": "1.0",
+  "description": "This is my first Chrome extension.",
+  "permissions": ["tabs", "storage"],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "path-to-google-play-badge.png",
+      "48": "path-to-google-play-badge.png",
+      "128": "path-to-google-play-badge.png"
+    }
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "icons": {
+    "16": "path-to-google-play-badge.png",
+    "48": "path-to-google-play-badge.png",
+    "128": "path-to-google-play-badge.png"
+  }
+}

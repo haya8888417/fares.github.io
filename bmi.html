@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="bmi.js" defer></script>
+</head>
+<body>
+    <a href="index.html">Back to Homepage</a>
+    <div class="calculator">
+        <ul class="web">
+            <li><a href="calculator.html">Calculator</a></li>
+            <li><a href="bmi.html">BMI Calculator</a></li>
+            <li><a href="speed.html">Speed Calculator</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <div>
+            <label for="name">Your name</label>
+            <input type="text" placeholder="Name" id="name" autofocus>
+            <br>
+            <small class="helper-text">Only letters and spaces.</small>
+            <div class="error" id="nameError"></div>
+        </div>
+        <hr>
+        <div>
+            <label for="height">Your height</label>
+            <input id="height" type="number" placeholder="Height">
+            <select id="heightunit" name="height">
+                <option value="1">Inches</option>
+                <option value="2">cm</option>
+            </select>
+            <small class="helper-text">Height must be between 50 and 250 cm or 20 and 100 inches</small>
+            <div class="error" id="heightError"></div>
+        </div>
+        <hr>
+        <div>
+            <label for="weight">Your weight</label>
+            <input id="weight" type="number" placeholder="Weight">
+            <select id="weightunit" name="weight">
+                <option value="1">Pounds</option>
+                <option value="2">kg</option>
+            </select>
+            <small class="helper-text">Weight must be between 20 and 200 kg or 40 and 400 pounds</small>
+            <div class="error" id="weightError"></div>
+        </div>
+        <hr>
+        <div>
+            <label for="decimal">Decimals to use in BMI score</label>
+            <input id="decimal" type="number" value="1">
+            <small class="helper-text">Number of decimals must be between 0 and 10</small>
+            <div class="error" id="decimalError"></div>
+        </div>
+        <button onclick="CalculateBMI()">Calculate BMI</button>
+        <p id="result"></p>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Speed Calculator</title>
+</head>
+<body>
+    <a href="index.html" class="back-link">Back to Homepage</a>
+    <div class="calculator">
+        <ul class="web">
+            <li><a href="calculator.html">Calculator</a></li>
+            <li><a href="bmi.html">BMI Calculator</a></li>
+            <li><a href="speed.html">Speed Calculator</a></li>
+        </ul>
+    </div>
+    <div class="calculator-container">
+        <h1>Speed Calculator</h1>
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" autofocus>
+        <hr>
+        <label for="km">Distance:</label>
+        <input type="number" id="km" placeholder="Enter distance">
+        <select id="distanceUnit" name="distance">
+            <option value="1">km</option>
+            <option value="0.001">m</option>
+            <option value="0.00001">cm</option>
+            <option value="0.0000254">inches</option>
+        </select>
+        <hr>
+        <label for="hours">Time:</label>
+        <input type="number" id="hours" placeholder="Enter time">
+        <select id="timeUnit" name="time">
+            <option value="1">hours</option>
+            <option value="0.0166667">minutes</option>
+            <option value="0.000277778">seconds</option>
+        </select>
+        <hr>
+        <label for="decimal">Decimals to use in speed score:</label>
+        <input id="decimal" type="number" value="2">
+        <button onclick="calculateSpeed()">Calculate Speed</button>
+        <p id="result"></p>
+        <p class="error" id="error"></p>
+    </div>
+    <script>
+        function calculateSpeed() {
+            const name = document.getElementById("name").value;
+            const km = parseFloat(document.getElementById("km").value);
+            const distanceUnit = parseFloat(document.getElementById("distanceUnit").value);
+            const hours = parseFloat(document.getElementById("hours").value);
+            const timeUnit = parseFloat(document.getElementById("timeUnit").value);
+            const decimalPlaces = parseInt(document.getElementById("decimal").value);
+            const resultElement = document.getElementById('result');
+            const errorElement = document.getElementById('error');
+            errorElement.textContent = '';
+            resultElement.textContent = '';
+
+            if (isNaN(km) || isNaN(hours) || km <= 0 || hours <= 0) {
+                errorElement.textContent = 'Please enter valid positive numbers for both distance and time.';
+                return;
+            }
+
+            // Convert distance and time based on the selected units
+            const distanceInKm = km * distanceUnit;
+            const timeInHours = hours * timeUnit;
+
+            const speed = distanceInKm / timeInHours;
+            let message = "";
+
+            if (speed < 40) {
+                message = "you are too slow! Your speed is " + speed.toFixed(decimalPlaces) + " km/h.";
+            } else if (speed > 100) {
+                message = "you are too fast! Your speed is " + speed.toFixed(decimalPlaces) + " km/h.";
+            } else {
+                message = "your speed is normal! Your speed is " + speed.toFixed(decimalPlaces) + " km/h.";
+            }
+
+            resultElement.textContent = `Dear ${name}, ${message}`;
+        }
+    </script>
+</body>
+</html>
